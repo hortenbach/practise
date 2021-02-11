@@ -30,7 +30,7 @@ begin
     s_clk <= '0'; wait for 5 ns;
   end process;
 
-  process
+  process(s_clk)
   begin
     if rising_edge(s_clk) then
       s_a <= std_logic_vector(unsigned(s_a) + 1); 

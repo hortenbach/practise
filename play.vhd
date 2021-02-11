@@ -13,12 +13,12 @@ end;
 
 architecture arch of play is
 
-    function myadd(opa, opb : unsigned) return unsigned is
-    variable result : unsigned(8 downto 0);
-    begin
-        result := opa + opb; 
-        return result;
-    end function;
+    -- function myadd(opa, opb : unsigned) return unsigned is
+    -- variable result : unsigned(8 downto 0);
+    -- begin
+    --     result := opa + opb; 
+    --     return result;
+    -- end function;
 
     signal c_r : std_logic_vector(8 downto 0);
 
@@ -30,7 +30,7 @@ architecture arch of play is
         begin
             if rising_edge(clk) then
                 -- c_r <= std_logic_vector(myadd(unsigned(a), unsigned(b)));
-                c_r <= std_logic_vector((unsigned(a) + unsigned(b));
+                c_r <= std_logic_vector(unsigned(a) + unsigned(b));
             end if;
         end process;
 
