@@ -1,3 +1,4 @@
+--!@library
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -13,12 +14,12 @@ end;
 
 architecture arch of play is
 
-    -- function myadd(opa, opb : unsigned) return unsigned is
-    -- variable result : unsigned(8 downto 0);
-    -- begin
-    --     result := opa + opb; 
-    --     return result;
-    -- end function;
+    function myadd(opa, opb : unsigned) return unsigned is
+    variable result : unsigned(7 downto 0);
+    begin
+        result := opa + opb; 
+        return result;
+    end function;
 
     signal c_r : std_logic_vector(7 downto 0);
 
@@ -30,8 +31,8 @@ architecture arch of play is
         process (clk)
         begin
             if rising_edge(clk) then
-                -- c_r <= std_logic_vector(myadd(unsigned(a), unsigned(b)));
-                c_r <= std_logic_vector(unsigned(a) + unsigned(b));
+                c_r <= std_logic_vector(myadd(unsigned(a), unsigned(b)));
+                -- c_r <= std_logic_vector(unsigned(a) + unsigned(b));
                 end if;
         end process;
 
