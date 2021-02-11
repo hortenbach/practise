@@ -2,10 +2,12 @@
 # create library for play-project
 vlib playlib
 # map new library to work
-vmap work playlib
+#vmap work playlib
+
 # we can check mapping by callin "vmap" in modlsim if we want to look at it
 
-vcom -check_synthesis play.vhd play_tb.vhd
+vcom -check_synthesis play_pkg.vhd play.vhd 
+vlog -mixedsvvh s play_tb.sv
 
 #load design
 vsim playlib.play_tb
@@ -18,6 +20,8 @@ vsim playlib.play_tb
 
 # Show all signals that are in Objects pane in Wave window
 add wave * 
+
+# +incdir+<dir> for each directory you want the simulator to look in for `include'd files. 
 
 #vcom -reportprogress 300 -work work ./play_tb.vhd
 #vcom -reportprogress 300 -work work C:/Users/gsh/Code/vhdl/play.vhd

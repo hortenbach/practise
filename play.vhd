@@ -3,6 +3,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library playlib;
+use playlib.play_pkg.all;
+
 entity play is
 port(
     clk : in std_ulogic;
@@ -13,14 +16,6 @@ port(
 end;
 
 architecture arch of play is
-
-    function myadd(opa, opb : unsigned) return unsigned is
-    variable result : unsigned(7 downto 0);
-    begin
-        result := opa + opb; 
-        return result;
-    end function;
-
     signal c_r : std_logic_vector(7 downto 0);
 
     begin
@@ -32,7 +27,6 @@ architecture arch of play is
         begin
             if rising_edge(clk) then
                 c_r <= std_logic_vector(myadd(unsigned(a), unsigned(b)));
-                -- c_r <= std_logic_vector(unsigned(a) + unsigned(b));
                 end if;
         end process;
 
