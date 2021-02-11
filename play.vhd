@@ -20,18 +20,19 @@ architecture arch of play is
     --     return result;
     -- end function;
 
-    signal c_r : std_logic_vector(8 downto 0);
+    signal c_r : std_logic_vector(7 downto 0);
 
     begin
 
-        c <= c_r(7 downto 0);
+        c <= c_r;
     
+        --vhdl-linter-parameter-next-line c_r
         process (clk)
         begin
             if rising_edge(clk) then
                 -- c_r <= std_logic_vector(myadd(unsigned(a), unsigned(b)));
                 c_r <= std_logic_vector(unsigned(a) + unsigned(b));
-            end if;
+                end if;
         end process;
 
 end arch; 
